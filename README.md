@@ -19,8 +19,8 @@ pip install -r requirements.txt
 ```
 
 ## Authors and acknowledgment
-Main author: Linde van Werven
-UMC Utrecht supervisor: Floris Reinders
-University of Utrecht supervisor: Xixi Lu
-UMC Utrecht second supervisor: Clemens Bos
+Main author: Linde van Werven \
+UMC Utrecht supervisor: Floris Reinders \
+University of Utrecht supervisor: Xixi Lu \
+UMC Utrecht second supervisor: Clemens Bos \
 
