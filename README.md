@@ -12,11 +12,24 @@ In this repo the following things are included:
 * MBI-thesis-report-LvW.pdf: my thesis report including the key insights from developing and applying the S2CF+C approach. 
 
 ## Installation
-For this project I used python version 3.14.0.
-The other dependencies listed in the requirements.txt and can be installed using the following command:
+For this project I used python version 3.14.0. This should just be downloaded on the [python website](https://www.python.org/downloads/).
+These could be some helpfull powershell commands, notice that this could all look different on other machines. Examples are: if your python path is set up differently, different OS or different terminal.
+After cloning this repository in a folder in your file explorer:
+```
+git clone https://github.com/LvanWerven/S2CFC-approach.git
+```
+A virtual python environment should be created (if you have the permisson to do that):
+```
+python -3.14 -m venv venv
+# Then activate the virtual environment, do this everytime you are opening the project
+venv/scripts/activate 
+```
+The other dependencies are listed in the requirements.txt and can be installed using the following command:
 ```
 pip install -r requirements.txt
 ```
+
+How to run the approach is in the readme.md in the code folder
 
 ## Authors and acknowledgment
 Main author: Linde van Werven \
