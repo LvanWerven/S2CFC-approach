@@ -4,8 +4,7 @@ Included in this repo is the code of the designed S2CF+C approach for preprocess
 
 ## Included
 In this repo the following things are included:
-* code: holding the python files to execute the S2CF+C approach and it's two modules. An overview of the working of the approach and the included modules can be found in the thesis report chapter 7. More detailed information about the code can be found in the folder and as inline comments in the python files. 
-* MBI-thesis-report-LvW.pdf: my thesis report including the key insights from developing and applying the S2CF+C approach. 
+* code: holding the python files to execute the S2CF+C approach and it's two modules. 
 
 ## Installation
 For this project I used python version 3.14.0. This should just be downloaded on the [python website](https://www.python.org/downloads/).
