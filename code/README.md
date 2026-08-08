@@ -14,7 +14,9 @@ This bash scripts runs the complete approach, twice the S2CF module (each for on
 ### How to run
 The bash script can be run by opening a (git) bash terminal and executing the following command (if located in the code folder, otherwise replace **run_S2CFC_approach.sh** with the complete path to that file):
 ```
-sh run_S2CFC_approach.sh [execution run name] [whether to include the Manual registration activity in the comparison]
+source venv/scripts/activate;
+cd code;
+sh run_S2CFC_approach.sh [execution run name] [whether to include the Manual registration activity in the comparison];
 ```
 The two parameters (in these brackets[]) should be changed to hold:
 * execution run name = just a name that you want to give this time execution of the S2CF+C approach, will be used to name folders and files.
