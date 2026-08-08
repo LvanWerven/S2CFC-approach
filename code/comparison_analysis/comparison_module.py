@@ -23,7 +23,7 @@ if __name__ == "__main__":
   parser.add_argument("--name", default="", type=str, help="The name of this execution")
   parser.add_argument("--execute", nargs='+', default=[], help="The names of the comparisons (performance, behaviour and handover) that should be executed, if empty it runs the whole module")
   parser.add_argument("--eln", type=str, default='event_log_removed_V2.csv', help="The name of the event log, in the elfp folders that contains the complete event log for the comparison")
-  parser.add_argument('--cfp', type=str, default='filtered_annotated_event_logs_per_study', help="The name of the folder in which the event log files per case are stored")
+  parser.add_argument('--cfp', type=str, default='filtered_annotated_event_logs_per_case', help="The name of the folder in which the event log files per case are stored")
   parser.add_argument("--ea", action="store_true", default=True, help="Exclude the annotated activities")
   args = parser.parse_args()
 

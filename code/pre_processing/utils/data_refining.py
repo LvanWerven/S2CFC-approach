@@ -214,7 +214,7 @@ def extract_case_id_from_message(
   caseId_column_name= CASEID_COLUMN_NAME,
   descriptive_column_name=DESCRIPTIVE_COLUMN_NAME
 ):
-  '''Extracts Study ID from the Message column and adds it to a new Study ID column in each CSV file in the folder.'''
+  '''Extracts Study ID from the {descriptive_column_name} column and adds it to a new Study ID column in each CSV file in the folder.'''
   study_to_files = defaultdict(set)
 
   for filename in os.listdir(folder_path):
@@ -251,7 +251,7 @@ def extract_case_id_from_message(
           writer.writeheader()
           writer.writerows(rows)
 
-        function_logs.append(f"✅ Extracted Study ID from Message in: {filename}")
+        function_logs.append(f"✅ Extracted Study ID from {descriptive_column_name} in: {filename}")
   return function_logs, study_to_files
 
 # Group files with the same case ID's together

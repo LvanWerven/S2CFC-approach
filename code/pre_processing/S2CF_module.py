@@ -384,6 +384,7 @@ if __name__ == "__main__":
       output_list_to_txt(event_mapping_function_logs, execution_logs_path, f"event_mapping_function_logs.txt")
       output_list_to_txt(add_activity_4_function_logs, execution_logs_path, f"add_activity_4_function_logs.txt")
       output_list_to_txt(add_activity_1_function_logs, execution_logs_path, f'add_activity_1_function_logs.txt')
+      output_list_to_txt(add_activity_0A_function_logs, execution_logs_path, f'add_activity_0A_function_logs.txt')
       add_activity_7_function_logs.append('Missed files:')
       add_activity_7_function_logs.extend(missed_files)
       output_list_to_txt(add_activity_7_function_logs, execution_logs_path, f'add_activity_7_function_logs.txt')
@@ -416,7 +417,7 @@ if __name__ == "__main__":
       value_column=CASEID_COLUMN_NAME,
       keywords_column="Activity Marker"
     )
-
+    print('Split files on start and end of worksession')
     fill_studyids_function_logs = []
     recursive_apply_to_files(
       folder_path=event_logs_folder,
@@ -512,7 +513,7 @@ if __name__ == "__main__":
       print('No report times provided, skipping annotation of post-report activity')
 
     print('Add dataset name as attribute')
-    _, add_activity_0A_function_logs = recursive_add_value_in_range(
+    _, add_dataset_name_function_logs = recursive_add_value_in_range(
       parent_folder_path=end_folder_path,
       output_folder_path=end_folder_path,
       value_to_add=dataset_name,
@@ -548,5 +549,6 @@ if __name__ == "__main__":
       output_list_to_txt(group_cases_function_logs, execution_logs_path, f'group_cases_function_logs.txt')
       output_list_to_txt(function_logs_filter_files, execution_logs_path, f'function_logs_filter_files.txt')
       output_list_to_txt(function_logs_add_end_time, execution_logs_path, f'function_logs_add_end_time.txt')
+      output_list_to_txt(add_dataset_name_function_logs, execution_logs_path, f'add_dataset_name_function_logs.txt')
       output_list_to_txt(split_file_on_value_function_logs, execution_logs_path, f'split_file_on_value_function_logs.txt')
       
