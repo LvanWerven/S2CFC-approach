@@ -22,5 +22,5 @@ pip install -r requirements.txt
 Main author: Linde van Werven \
 UMC Utrecht supervisor: Floris Reinders \
 University of Utrecht supervisor: Xixi Lu \
-UMC Utrecht second supervisor: Clemens Bos \
+UMC Utrecht second supervisor: Clemens Bos
 
