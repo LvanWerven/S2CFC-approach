@@ -25,7 +25,7 @@
   # ------------------------------------------------------------
   # 1. Run the S2CF_module for the pre-AI-addition data
   # ------------------------------------------------------------
-  "C:/Program Files/Python314/python.exe" -m pre_processing.S2CF_module \
+  py -m pre_processing.S2CF_module \
     --lfp=$RAW_PRE_DATA_FOLDER \
     --dsn="pre-AI-addition" \
     --wfp="$PARENT_FOLDER\\pre_$NAME" \
@@ -39,7 +39,7 @@
   # ------------------------------------------------------------
   # 2. Run the S2CF_module for the trial-AI-addition data
   # ------------------------------------------------------------
-  "C:/Program Files/Python314/python.exe" -m pre_processing.S2CF_module \
+  py -m pre_processing.S2CF_module \
     --lfp=$RAW_TRIAL_DATA_FOLDER \
     --dsn="trial-AI-addition" \
     --wfp="$PARENT_FOLDER\\trial_$NAME" \
@@ -52,7 +52,7 @@
   # ------------------------------------------------------------
   # 3. Run the comparison_module for the preprocessed data
   # ------------------------------------------------------------
-  "C:/Program Files/Python314/python.exe" -m comparison_analysis.comparison_module \
+  py -m comparison_analysis.comparison_module \
     --elfp "$PARENT_FOLDER\\trial_$NAME" "$PARENT_FOLDER\\pre_$NAME" \
     --ofp "$PARENT_FOLDER\\comparison_results_$NAME" \
     --dsn "trial-AI-addition" "pre-AI-addition" \

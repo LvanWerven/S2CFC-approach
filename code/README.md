@@ -2,17 +2,19 @@
 This README will describe how the S2CF+C_approach should be run and what is included in this folder. For more detailed information about the working, either read the thesis report or the respective code files. 
 
 > *Disclaimers*
-> * All the code written is not optimized or execution time / memory, executing it takes some time and is inefficiënt. I have implemented some print statements to show you that it is still running. That being said, if you haven't seen a new print statement for quite some time, wait longer. It is eager to show you errors, not keeping you informed on where it is in execution. However, if execution of the whole approach takes longer than 15min something did went wrong.
-> * Some of the code has been generated with help of the LLM models Gemini of Google, Copilot of Microsoft
-> * Gemini was used to improve functions, help with syntax or based on logic provided to generate a function.
+> * All the code written is not optimized or execution time / memory, executing it takes some time and is inefficiënt. I have implemented some print statements to show you that it is still running. That being said, if you haven't seen a new print statement for quite some time, wait longer. It is eager to show you errors, not keeping you informed on where it is in execution. However, if execution of the whole approach takes longer than 15min something probably did went wrong.
+> * Some of the code has been generated with help of the LLM models Gemini of Google or Copilot of Microsoft
+> * Gemini was used to improve functions, help with syntax or to generate a function based on provided logic.
 > * Copilot of Microsoft was used for bugfixing and small code generation tasks, tasks that include error messages could include directory structure, log files with study IDs or other UMC Utrecht specific information were send to Copilot since this information (to my understanding) stays within the UMC Utrecht.
 > All the code is understood, has been checked and were necessary improved by me
 
 ## run_S2CFC_approach.sh
-This bash scripts runs the complete approach, twice the S2CF module (each for one dataset) and once the comparison module. Currently, this bash script is setup to run Pre- and Trial-AI-addition data, as stored in the respective folder paths. 
+This bash scripts runs the complete approach, twice the S2CF module (each for one dataset) and once the comparison module. 
 
 ### How to run
-The bash script can be run by opening a (git) bash terminal and executing the following command (if located in the code folder, otherwise replace **run_S2CFC_approach.sh** with the complete path to that file):
+Before running the configs of both the modules (*pre_processing* and *comparison_analysis*) should be filled in, and the **run_S2CFC_approach.sh** as well with the necessary paths and names.
+ 
+The bash script can be run by opening a (git) bash terminal and executing the following command (if located in the S2CFC folder, otherwise replace **run_S2CFC_approach.sh** with the complete path to that file):
 ```
 source venv/scripts/activate;
 cd code;
