@@ -4,9 +4,9 @@ from datetime import timedelta
 import os
 import re
 from typing import DefaultDict, Dict, List, Literal, Optional, Tuple, Union
-
 import pandas as pd
 
+from pre_processing.S2CF_config import DESCRIPTIVE_COLUMN_NAME
 from pre_processing.utils.general_utils import identify_substring, list_files_and_folders_in_folder, normalize_string
 
 
@@ -38,6 +38,7 @@ def abstract_streaks_to_event_file(
     map_prebuild_index: Dict[Tuple[str, ...], List[str]],
     map_seq_to_id: Dict[Tuple[str, ...], str],
     output_folder_path: str,
+    descriptive_column_name: str = DESCRIPTIVE_COLUMN_NAME,
     function_logs: List[str] = [],
     files_with_abstraction_folder_path: str = '',
     match_mode: Literal["sequential", "ordered"] = "sequential",
@@ -48,7 +49,7 @@ def abstract_streaks_to_event_file(
   # --- Helper functions that preserve behavior and log messages exactly ---
   def _log(msg: str, show: bool = False) -> None:
     if show:
-      print(str)
+      print(msg)
     function_logs.append(msg)
 
   def _streak_to_ids(streak_tokens: List[str]) -> List[str]:
@@ -59,8 +60,8 @@ def abstract_streaks_to_event_file(
     # Replace the streak rows with start/end markers
     start_row = dict(start_row_src)
     end_row = dict(end_row_src)
-    start_row['Message'] = f'{id_full}_start'
-    end_row['Message'] = f'{id_full}_end'
+    start_row[descriptive_column_name] = f'{id_full}_start'
+    end_row[descriptive_column_name] = f'{id_full}_end'
     rows_out.append(start_row)
     rows_out.append(end_row)
 
@@ -111,7 +112,7 @@ def abstract_streaks_to_event_file(
       fieldnames = list(reader.fieldnames) if reader.fieldnames else []
 
       for row in reader:
-        raw_message = row.get('Message', '')
+        raw_message = row.get(descriptive_column_name, '')
         normalized_message = normalize_string(raw_message, remove_punctuation=False)
         serialized_message, _ = identify_substring(normalized_message, action='replace')
 
@@ -232,7 +233,7 @@ def abstract_streaks_to_event_file(
     # Precompute canonical tokens per row
     tokens: List[str] = []
     for idx, row in enumerate(rows_in):
-      raw_message = row.get('Message', '')
+      raw_message = row.get(descriptive_column_name, '')
       serialized_message, _ = identify_substring(raw_message, action='replace')
       tokens.append(serialized_message)
     _log(f"serialized all the rows")
@@ -245,14 +246,6 @@ def abstract_streaks_to_event_file(
         self.seq = seq
         self.next_idx = 0
         self.matched_indices: List[int] = []
-
-      # def can_advance(self, token: str) -> bool:
-      #   _log(f'check can advance, {self.next_idx < len(self.seq)} and {self.seq[self.next_idx] == token}')
-      #   _log(f'with values: self.next_idx = {self.next_idx}')
-      #   _log(f'with values: len(self.seq) = {len(self.seq)}')
-      #   _log(f'with values: self.seq[self.next_idx] = {self.seq[self.next_idx]}')
-      #   _log(f'with values: token = {token}')
-      #   return self.next_idx < len(self.seq) and self.seq[self.next_idx] == token
 
       def can_advance(self, token: str) -> bool:
         if self.next_idx >= len(self.seq):
@@ -373,25 +366,25 @@ def abstract_streaks_to_event_file(
       if (i in start_at) and (i in end_at):
         id_full, _ = start_at[i]
         start_row = dict(row)
-        start_row['Message'] = f'{id_full}_start'
+        start_row[descriptive_column_name] = f'{id_full}_start'
         rows_out.append(start_row)
 
         end_row = dict(row)
-        end_row['Message'] = f'{id_full}_end'
+        end_row[descriptive_column_name] = f'{id_full}_end'
         rows_out.append(end_row)
         continue
 
       if i in start_at:
         id_full, _ = start_at[i]
         start_row = dict(row)
-        start_row['Message'] = f'{id_full}_start'
+        start_row[descriptive_column_name] = f'{id_full}_start'
         rows_out.append(start_row)
         continue  # do not also write the original row
 
       if i in end_at:
         id_full, _ = end_at[i]
         end_row = dict(row)
-        end_row['Message'] = f'{id_full}_end'
+        end_row[descriptive_column_name] = f'{id_full}_end'
         rows_out.append(end_row)
         continue
 
